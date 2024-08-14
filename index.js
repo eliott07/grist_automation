@@ -1,3 +1,5 @@
+const statusElement = document.getElementById('status'); // Assuming an element with id 'status' exists
+
 function ready(fn) {
   if (document.readyState !== 'loading') {
     fn();
@@ -8,7 +10,15 @@ function ready(fn) {
 
 ready(async  
  function() {
-  const statusElement = document.getElementById('status'); // Assuming an element with id 'status' exists
+
+  grist.ready({
+    requiredAccess: "full";
+    columns: [
+      { name: "actions", type: "Any", strictType: true, title: "Actions", description: "List of user actions to execute. As each user action definition is a list, this column must hold a list of lists. See https://github.com/gristlabs/grist-core/blob/main/documentation/overview.md#changes-to-documents" },
+      { name: "isEnabled", type: "Bool", title: "Enabled?", description: "If this column's value is False, the widget won't do anything." },
+    ],
+  });
+  
 
   try {
     statusElement.textContent = 'Fetching enabled records...';
