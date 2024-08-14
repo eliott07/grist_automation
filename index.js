@@ -21,7 +21,7 @@ ready(async
     for (const record of enabledRecords) {
       statusElement.textContent = 'Processing record ' + record.id + '...';
 
-      const actions = record.Actions;
+      const actions = record.actions;
       // Assuming 'actions' is a list of actions to be executed
       await grist.docApi.applyUserActions(actions);
     }
