@@ -27,7 +27,7 @@ ready(async function() {
     
     // Assuming 'linkedTable' is the name of your linked table
     const table = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab');
-    const records = toRecordMap(await grist.docApi.fetchTable(tableId));
+    const records = toRecordMap(table);
     
     msg = 'Processing ' + records.length + ' records records...';
     setStatus(msg);
