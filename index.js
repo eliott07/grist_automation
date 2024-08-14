@@ -26,19 +26,22 @@ ready(async function() {
     setStatus(msg);
     
     // Assuming 'linkedTable' is the name of your linked table
-    const enabledRecords = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab').filter({ Nouveau_contact_Vrai_Faux_: true });
-
-    msg = 'Processing ' + enabledRecords.length + ' enabled records...';
+    const table = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab');
+    const records = toRecordMap(await grist.docApi.fetchTable(tableId));
+    
+    msg = 'Processing ' + records.length + ' records records...';
     setStatus(msg);
 
     
-    for (const record of enabledRecords) {
+    for (const record of records) {
       msg = 'Processing record ' + record.id + '...';
       setStatus(msg);
-      
-      const actions = record.actions;
+      if(record.Nouveau_contact_Vrai_Faux_){
+        
+        const actions = record.actions;
       // Assuming 'actions' is a list of actions to be executed
-      await grist.docApi.applyUserActions(actions);
+        await grist.docApi.applyUserActions(actions);
+      }
     }
 
     msg = 'All records processed successfully.';
@@ -63,4 +66,13 @@ function setVisible(querySelector, isVisible) {
   let elem = document.querySelector(querySelector);
   if (!elem) return false;
   elem.style.display = isVisible ? "block" : "none";
+}
+
+
+function toRecordMap(columnData) {
+  const fieldNames = Object.keys(columnData);
+  return new Map(columnData.id.map((id, index) => {
+    const values = fieldNames.map(col => [col, columnData[col][index]]);
+    return [id, Object.fromEntries(values)];
+  }));
 }
