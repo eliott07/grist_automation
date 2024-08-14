@@ -26,7 +26,7 @@ ready(async function() {
     setStatus(msg);
     
     // Assuming 'linkedTable' is the name of your linked table
-    const enabledRecords = await grist.tables.get('Formulaire_de_contact_Etalab').filter({ Nouveau_contact_Vrai_Faux_: true }).getAllRows();
+    const enabledRecords = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab').filter({ Nouveau_contact_Vrai_Faux_: true });
 
     msg = 'Processing ' + enabledRecords.length + ' enabled records...';
     setStatus(msg);
