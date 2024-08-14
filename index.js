@@ -8,8 +8,7 @@ function ready(fn) {
   }
 }
 
-ready(async  
- function() {
+ready(async function() {
 
   grist.ready({
     requiredAccess: "full";
