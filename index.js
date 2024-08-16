@@ -46,11 +46,12 @@ ready(async function() {
 
         console.log(actions);
         
-        const dict = actions[4];
+        const dict = actions[0][4];
 
         console.log(dict);
-        actions[4] = dict[1];
-
+        actions[0][4] = dict[1];
+        actions = actions[0].slice(1);
+        
         console.log(actions);
       // Assuming 'actions' is a list of actions to be executed
         await grist.docApi.applyUserActions(actions);
