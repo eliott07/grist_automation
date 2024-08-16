@@ -38,7 +38,7 @@ ready(async function() {
     
     for (const [key, value] of records) {
       console.log([key, value]);
-      msg = msg + 'Processing record ' + record.id + '...';
+      msg = msg + 'Processing record ' + key + '...';
       setStatus(msg);
       if(value.Nouveau_contact_Vrai_Faux_){
         
