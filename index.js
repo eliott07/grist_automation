@@ -42,7 +42,11 @@ ready(async function() {
       setStatus(msg);
       if(value.Nouveau_contact_Vrai_Faux_){
         
-        const actions = value.Actions;
+        const actions = value.Actions.slice(1);
+        const dict = actions[4];
+        actions[4] = dict[1];
+
+        console.log(actions);
       // Assuming 'actions' is a list of actions to be executed
         await grist.docApi.applyUserActions(actions);
       }
@@ -77,6 +81,6 @@ function toRecordMap(columnData) {
   const fieldNames = Object.keys(columnData);
   return new Map(columnData.id.map((id, index) => {
     const values = fieldNames.map(col => [col, columnData[col][index]]);
-    return [Object.fromEntries(values)];
+    return [id, Object.fromEntries(values)];
   }));
 }
