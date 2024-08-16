@@ -77,6 +77,6 @@ function toRecordMap(columnData) {
   const fieldNames = Object.keys(columnData);
   return new Map(columnData.id.map((id, index) => {
     const values = fieldNames.map(col => [col, columnData[col][index]]);
-    return [id, Object.fromEntries(values)];
+    return [Object.fromEntries(values)];
   }));
 }
