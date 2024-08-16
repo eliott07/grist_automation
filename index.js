@@ -43,7 +43,12 @@ ready(async function() {
       if(value.Nouveau_contact_Vrai_Faux_){
         
         const actions = value.Actions.slice(1);
+
+        console.log(actions);
+        
         const dict = actions[4];
+
+        console.log(dict);
         actions[4] = dict[1];
 
         console.log(actions);
