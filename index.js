@@ -29,19 +29,20 @@ ready(async function() {
     const table = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab');
     const records = toRecordMap(table);
 
-    console.log(table)
-    console.log(records)
+    console.log(table);
+    console.log(records);
     
     msg = msg + 'Processing ' + records.length + ' records records...';
     setStatus(msg);
 
     
-    for (const record of records) {
+    for (const [key, value] of records) {
+      console.log([key, value]);
       msg = msg + 'Processing record ' + record.id + '...';
       setStatus(msg);
-      if(record.Nouveau_contact_Vrai_Faux_){
+      if(value.Nouveau_contact_Vrai_Faux_){
         
-        const actions = record.actions;
+        const actions = value.Actions;
       // Assuming 'actions' is a list of actions to be executed
         await grist.docApi.applyUserActions(actions);
       }
