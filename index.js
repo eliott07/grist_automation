@@ -54,7 +54,7 @@ ready(async function() {
         
         console.log(action_final);
       // Assuming 'actions' is a list of actions to be executed
-        await grist.docApi.applyUserActions(action_final);
+        await grist.docApi.applyUserActions(action_final[1]);
       }
     }
 
