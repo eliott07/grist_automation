@@ -50,11 +50,11 @@ ready(async function() {
 
         console.log(dict);
         actions[0][4] = dict[1];
-        actions = actions[0].slice(1);
+        action_final = actions[0].slice(1);
         
-        console.log(actions);
+        console.log(action_final);
       // Assuming 'actions' is a list of actions to be executed
-        await grist.docApi.applyUserActions(actions);
+        await grist.docApi.applyUserActions(action_final);
       }
     }
 
