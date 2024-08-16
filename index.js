@@ -22,19 +22,19 @@ ready(async function() {
   
 
   try {
-    msg = 'Fetching enabled records...';
+    msg = msg + 'Fetching enabled records...';
     setStatus(msg);
     
     // Assuming 'linkedTable' is the name of your linked table
     const table = await grist.docApi.fetchTable('Formulaire_de_contact_Etalab');
     const records = toRecordMap(table);
     
-    msg = 'Processing ' + records.length + ' records records...';
+    msg = msg + 'Processing ' + records.length + ' records records...';
     setStatus(msg);
 
     
     for (const record of records) {
-      msg = 'Processing record ' + record.id + '...';
+      msg = msg + 'Processing record ' + record.id + '...';
       setStatus(msg);
       if(record.Nouveau_contact_Vrai_Faux_){
         
@@ -44,11 +44,11 @@ ready(async function() {
       }
     }
 
-    msg = 'All records processed successfully.';
+    msg = msg + 'All records processed successfully.';
     setStatus(msg);
     
   } catch (error) {
-    msg = 'Error processing records: ' + error.message;
+    msg = msg + 'Error processing records: ' + error.message;
     setStatus(msg);
     console.error('Error processing records:', error);
   }
