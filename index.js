@@ -22,7 +22,7 @@ ready(async function() {
   
 
   try {
-    msg = msg + 'Fetching enabled records...';
+    msg = msg + 'Recherche de nouveaux contacts \n';
     setStatus(msg);
     
     // Assuming 'linkedTable' is the name of your linked table
@@ -32,13 +32,13 @@ ready(async function() {
     console.log(table);
     console.log(records);
     
-    msg = msg + 'Processing ' + records.length + ' records records...';
+    msg = msg + 'Ajout de ' + records.length + ' nouveaux contacts \n';
     setStatus(msg);
 
     
     for (const [key, value] of records) {
       console.log([key, value]);
-      msg = msg + 'Processing record ' + key + '...';
+      msg = msg + 'Contact n°' + key + 'ajouté \n';
       setStatus(msg);
       if(value.Nouveau_contact_Vrai_Faux_){
         
