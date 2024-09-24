@@ -40,7 +40,7 @@ ready(async function() {
       console.log([key, value]);
       msg = msg + 'Contact n°' + key + 'ajouté \n';
       setStatus(msg);
-      if(value.Nouveau_contact_Vrai_Faux_){
+      if(value.Action_a_realiser_Vrai_Faux_){
         
         const actions = value.Actions.slice(1);
 
