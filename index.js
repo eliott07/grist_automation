@@ -58,13 +58,13 @@ ready(async function() {
       }
     }
 
-    msg = msg + 'All records processed successfully.';
+    msg = msg + 'Tous les nouveaux contacts et tâches ont été ajoutés';
     setStatus(msg);
     
   } catch (error) {
     msg = msg + 'Error processing records: ' + error.message;
     setStatus(msg);
-    console.error('Error processing records:', error);
+    console.error('Erreur: ', error);
   }
 });
 
